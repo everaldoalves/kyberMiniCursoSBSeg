@@ -17,13 +17,13 @@ if len(message) != kyber.params.n:
     message = message + [0] * (kyber.params.n - len(message))
     print("Mensagem formatada", message)
 
-# Criptografa a mensagem
+# Encriptação
 ciphertext = kyber.encrypt(pk, vector(kyber.F, message), b'randomness')
 print("Mensagem encriptada", ciphertext)
 
-# Descriptografa o criptograma
+# Decriptação
 decrypted_message = kyber.decrypt(sk, ciphertext)
 print("Mensagem decriptada", decrypted_message)
 
-# Verifica se a mensagem descriptografada é igual à mensagem original
+# Verifica se a mensagem decriptada é igual à mensagem original
 assert decrypted_message == vector(kyber.F, message)
